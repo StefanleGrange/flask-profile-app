@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}All Users{% endblock %}
+{% block content %}
+<h1>All Users ({{ users|length }})</h1>
+{% if users %}
+<table>
+  <tr><th>ID</th><th>Username</th><th>Email</th><th>Bio</th><th>Actions</th></tr>
+  {% for u in users %}
+  <tr>
+    <td>{{ u['id'] }}</td>
+    <td><a href="{{ url_for('main.profile', user_id=u['id']) }}">{{ u['username'] }}</a></td>
+    <td>{{ u['email'] }}</td>
+    <td>{{ u['bio'] or '—' }}</td>
+    <td><a href="{{ url_for('main.update', user_id=u['id']) }}">Edit</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No users yet. <a href="{{ url_for('main.register') }}">Register the first one</a>.</p>
+{% endif %}
+{% endblock %}

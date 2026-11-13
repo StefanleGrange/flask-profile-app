@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ user['username'] }}{% endblock %}
+{% block content %}
+<h1>{{ user['username'] }}</h1>
+<p><strong>Email:</strong> {{ user['email'] }}</p>
+<p><strong>Bio:</strong> {{ user['bio'] or '—' }}</p>
+<p><small>Joined {{ user['created_at'] }}</small></p>
+<p><a href="{{ url_for('main.update', user_id=user['id']) }}">Edit profile</a></p>
+{% endblock %}

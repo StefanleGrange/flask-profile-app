@@ -1,0 +1,14 @@
+<label>Username
+  <input name="username" maxlength="30" required
+         value="{{ form.get('username', '') }}">
+  {% if errors.username %}<span class="error">{{ errors.username }}</span>{% endif %}
+</label>
+<label>Email
+  <input name="email" type="email" required value="{{ form.get('email', '') }}">
+  {% if errors.email %}<span class="error">{{ errors.email }}</span>{% endif %}
+</label>
+<label>Bio (max 160 chars)
+  <textarea name="bio" rows="3" maxlength="160">{{ form.get('bio', '') }}</textarea>
+  {% if errors.bio %}<span class="error">{{ errors.bio }}</span>{% endif %}
+</label>
+<button type="submit">{% block submit_label %}Save{% endblock %}</button>
